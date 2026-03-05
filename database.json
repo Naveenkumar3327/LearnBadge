@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "naveen1127kumar",
+      "email": "naveen1127kumar@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "naveenkumardit8",
+      "email": "naveenkumardit8@gmail.com",
+      "createdAt": "2026-03-04T06:25:32.550Z"
+    }
+  ],
+  "enrollments": [],
+  "badges": [
+    {
+      "id": 1,
+      "name": "First Steps",
+      "description": "Complete your first course",
+      "icon": "🎯",
+      "requirement": 1
+    },
+    {
+      "id": 2,
+      "name": "Knowledge Seeker",
+      "description": "Complete 3 courses",
+      "icon": "📚",
+      "requirement": 3
+    },
+    {
+      "id": 3,
+      "name": "Master Learner",
+      "description": "Complete 5 courses",
+      "icon": "🏆",
+      "requirement": 5
+    }
+  ],
+  "userBadges": []
+}

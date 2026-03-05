@@ -1,0 +1,57 @@
+========================================
+QUICK START - Course Badge Platform
+========================================
+
+STEP 1: Get Gemini API Key
+---------------------------
+1. Go to: https://makersuite.google.com/app/apikey
+2. Sign in with Google
+3. Click "Create API Key"
+4. Copy the key
+
+STEP 2: Add API Key
+-------------------
+1. Open the .env file
+2. Replace "your_gemini_api_key_here" with your actual key
+3. Save the file
+
+STEP 3: Install & Run
+---------------------
+Run these commands:
+
+npm install
+npm run dev
+
+STEP 4: Open Browser
+--------------------
+Visit: http://localhost:3000
+
+FEATURES:
+---------
+✓ Landing page with features and reviews
+✓ Real courses from Coursera, Udemy, GeeksforGeeks, edX, Udacity
+✓ Detailed course information (duration, price, assignments, etc.)
+✓ Category filtering (Web Dev, Data Science, ML, etc.)
+✓ Login/Signup system
+✓ Badge earning system
+
+NAVIGATION:
+-----------
+Home -> Landing page
+Courses -> Browse external courses
+About -> About the platform
+Login/Signup -> User authentication
+
+IMPORTANT:
+----------
+- First course load takes 10-20 seconds (AI processing)
+- Make sure API key is set correctly in .env
+- Restart server after changing .env
+
+TROUBLESHOOTING:
+----------------
+- No courses? Check API key and internet connection
+- Server error? Make sure .env file has valid API key
+- Slow loading? First load is slower, subsequent loads are faster
+
+========================================
