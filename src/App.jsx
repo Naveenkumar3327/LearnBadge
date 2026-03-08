@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { 
   Home, BookOpen, BookMarked, Award, Info, User, 
   LogOut, Menu, GraduationCap, X, Zap, Star, Heart,
-  Facebook, Twitter, Linkedin, Instagram
+  Facebook, Twitter, Linkedin, Instagram, Trophy
 } from 'lucide-react';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
@@ -14,6 +14,7 @@ import Signup from './pages/Signup';
 import MyCourses from './pages/MyCourses';
 import Badges from './pages/Badges';
 import Profile from './pages/Profile';
+import Certificates from './pages/Certificates';
 
 // Shared Footer Component - Consistent across all pages
 function Footer() {
@@ -221,6 +222,7 @@ function SidebarNavigation({ user, onLogout }) {
     { path: '/courses', icon: BookOpen, label: 'Courses' },
     { path: '/my-courses', icon: BookMarked, label: 'My Courses' },
     { path: '/badges', icon: Award, label: 'My Badges' },
+    { path: '/certificates', icon: Trophy, label: 'Certificates' },
     { path: '/about', icon: Info, label: 'About' },
     { path: '/profile', icon: User, label: 'Profile' },
   ];
@@ -393,6 +395,7 @@ function App() {
                 <Route path="/courses" element={<Courses user={user} />} />
                 <Route path="/my-courses" element={<MyCourses user={user} />} />
                 <Route path="/badges" element={<Badges user={user} />} />
+                <Route path="/certificates" element={<Certificates user={user} />} />
                 <Route path="/profile" element={<Profile user={user} />} />
                 <Route path="/about" element={<About />} />
               </Routes>
