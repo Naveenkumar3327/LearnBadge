@@ -16,67 +16,66 @@ import Badges from './pages/Badges';
 import Profile from './pages/Profile';
 import Certificates from './pages/Certificates';
 
-// Shared Footer Component - Consistent across all pages
+// Shared Footer Component - Futuristic/Cyberpunk Design
 function Footer() {
   return (
-    <footer className="relative bg-slate-950 text-gray-300 overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 animate-gradient-shift opacity-10"></div>
+    <footer className="cyber-footer text-gray-300 relative overflow-hidden">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 cyber-grid opacity-30"></div>
       
-      {/* Decorative orbs - subtle */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-600 rounded-full blur-3xl animate-fade-pulse"></div>
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-600 rounded-full blur-3xl animate-fade-pulse"></div>
+      {/* Decorative orbs */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-cyan-500 rounded-full blur-[100px] opacity-20"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-600 rounded-full blur-[100px] opacity-20"></div>
       
       {/* Main footer content */}
       <div className="relative z-10 container mx-auto px-4 py-12 sm:py-16">
-        {/* Main footer grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand column */}
           <div className="sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 cyber-glass rounded-xl flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-cyan-400" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">LearnBadge</h3>
-                <p className="text-xs text-gray-500">Learn & Earn</p>
+                <p className="text-xs text-cyan-400">Future of Learning</p>
               </div>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              Empowering learners worldwide with quality education and achievement recognition. Start your journey today!
+              Empowering learners worldwide with cutting-edge education and achievement recognition.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+              <a href="#" className="w-10 h-10 cyber-glass rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:border-cyan-400 transition-all hover:scale-105">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+              <a href="#" className="w-10 h-10 cyber-glass rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:border-cyan-400 transition-all hover:scale-105">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+              <a href="#" className="w-10 h-10 cyber-glass rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:border-cyan-400 transition-all hover:scale-105">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+              <a href="#" className="w-10 h-10 cyber-glass rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:border-cyan-400 transition-all hover:scale-105">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
           
           {/* Quick Links */}
-          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-indigo-500/30">
+          <div className="cyber-card p-5 rounded-xl">
             <h4 className="font-bold text-white mb-4 flex items-center gap-2">
-              <Zap className="w-5 h-5 text-indigo-400" />
+              <Zap className="w-5 h-5 text-cyan-400" />
               Quick Links
             </h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/" className="text-gray-400 hover:text-indigo-400 transition-colors">Home</Link></li>
-              <li><Link to="/courses" className="text-gray-400 hover:text-indigo-400 transition-colors">Courses</Link></li>
-              <li><Link to="/about" className="text-gray-400 hover:text-indigo-400 transition-colors">About Us</Link></li>
-              <li><Link to="/badges" className="text-gray-400 hover:text-indigo-400 transition-colors">Badges</Link></li>
+              <li><Link to="/" className="text-gray-400 hover:text-cyan-400 transition-colors">Home</Link></li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-cyan-400 transition-colors">Courses</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-cyan-400 transition-colors">About Us</Link></li>
+              <li><Link to="/badges" className="text-gray-400 hover:text-cyan-400 transition-colors">Badges</Link></li>
             </ul>
           </div>
           
           {/* Support */}
-          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-purple-500/30">
+          <div className="cyber-card p-5 rounded-xl">
             <h4 className="font-bold text-white mb-4 flex items-center gap-2">
               <Star className="w-5 h-5 text-purple-400" />
               Support
@@ -90,7 +89,7 @@ function Footer() {
           </div>
           
           {/* Contact Info */}
-          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-pink-500/30">
+          <div className="cyber-card p-5 rounded-xl">
             <h4 className="font-bold text-white mb-4 flex items-center gap-2">
               <Heart className="w-5 h-5 text-pink-400" />
               Contact
@@ -104,16 +103,16 @@ function Footer() {
         </div>
         
         {/* Bottom bar */}
-        <div className="border-t border-slate-800/50 mt-10 pt-8">
+        <div className="border-t border-cyan-500/20 mt-10 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-500">
               &copy; 2026 LearnBadge. All rights reserved.
             </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-gray-500">Crafted with</span>
-              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <Heart className="w-4 h-4 text-pink-500 fill-current" />
               <span className="text-gray-500">for</span>
-              <span className="gradient-text-footer font-semibold">learners everywhere</span>
+              <span className="gradient-text-cyber font-semibold">learners everywhere</span>
             </div>
           </div>
         </div>
@@ -133,13 +132,13 @@ function TopNavigation({ onLogout }) {
   ];
 
   return (
-    <nav className="bg-slate-900/95 backdrop-blur-sm text-white shadow-lg sticky top-0 z-50 border-b border-slate-800 animate-fade-in-down">
+    <nav className="cyber-glass sticky top-0 z-50 border-b border-cyan-500/30 animate-fade-in-down">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-xl sm:text-2xl font-bold flex items-center gap-2 hover:text-indigo-400 transition-colors">
+          <Link to="/" className="text-xl sm:text-2xl font-bold flex items-center gap-2 hover:text-cyan-400 transition-colors">
             <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent hidden sm:inline">LearnBadge</span>
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent sm:hidden">LB</span>
+            <span className="gradient-text-cyber hidden sm:inline">LearnBadge</span>
+            <span className="gradient-text-cyber sm:hidden">LB</span>
           </Link>
           
           {/* Desktop Navigation */}
@@ -150,21 +149,21 @@ function TopNavigation({ onLogout }) {
                 <Link 
                   key={link.to} 
                   to={link.to} 
-                  className={`hover:text-indigo-400 transition-colors flex items-center gap-2 text-sm lg:text-base ${location.pathname === link.to ? 'text-indigo-400' : ''}`}
+                  className={`hover:text-cyan-400 transition-colors flex items-center gap-2 text-sm lg:text-base ${location.pathname === link.to ? 'text-cyan-400' : ''}`}
                 >
                   <Icon className="w-4 h-4 lg:w-5 lg:h-5" />
                   <span className="hidden lg:inline">{link.label}</span>
                 </Link>
               );
             })}
-            <Link to="/login" className="hover:text-indigo-400 transition-colors text-sm lg:text-base">Login</Link>
-            <Link to="/signup" className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all hover:scale-105 text-sm lg:text-base">Sign Up</Link>
+            <Link to="/login" className="hover:text-cyan-400 transition-colors text-sm lg:text-base">Login</Link>
+            <Link to="/signup" className="cyber-btn-primary px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-sm lg:text-base">Sign Up</Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-2xl hover:text-indigo-400 transition-colors p-2"
+            className="md:hidden text-2xl hover:text-cyan-400 transition-colors p-2"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -181,7 +180,7 @@ function TopNavigation({ onLogout }) {
                     key={link.to} 
                     to={link.to} 
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover:bg-slate-800 ${location.pathname === link.to ? 'bg-indigo-600 text-white' : 'text-gray-300'}`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover:bg-cyan-500/10 ${location.pathname === link.to ? 'bg-cyan-500/20 text-cyan-400' : 'text-gray-300'}`}
                   >
                     <Icon className="w-5 h-5" />
                     <span>{link.label}</span>
@@ -192,14 +191,14 @@ function TopNavigation({ onLogout }) {
                 <Link 
                   to="/login" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex-1 text-center py-3 rounded-lg bg-slate-800 text-gray-300 hover:bg-slate-700 transition-all"
+                  className="flex-1 text-center py-3 rounded-lg cyber-glass text-gray-300 hover:text-cyan-400 transition-all"
                 >
                   Login
                 </Link>
                 <Link 
                   to="/signup" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex-1 text-center py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all"
+                  className="flex-1 text-center py-3 rounded-lg cyber-btn-primary"
                 >
                   Sign Up
                 </Link>
@@ -384,7 +383,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="cyber-bg cyber-grid min-h-screen">
         {user ? (
           <>
             <SidebarNavigation user={user} onLogout={handleLogout} />
