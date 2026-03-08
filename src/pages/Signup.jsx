@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 
 function Signup({ onSignup }) {
   const [step, setStep] = useState(1);
@@ -16,11 +17,35 @@ function Signup({ onSignup }) {
     currentRole: ''
   });
   
+  const [passwordFocused, setPasswordFocused] = useState(false);
+  const [validationErrors, setValidationErrors] = useState([]);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
   const navigate = useNavigate();
+
+  // Password validation requirements
+  const passwordRequirements = [
+    { id: 'length', label: 'At least 8 characters', test: (p) => p.length >= 8 },
+    { id: 'lowercase', label: 'Contains lowercase letter (a-z)', test: (p) => /[a-z]/.test(p) },
+    { id: 'uppercase', label: 'Contains uppercase letter (A-Z)', test: (p) => /[A-Z]/.test(p) },
+    { id: 'number', label: 'Contains number (0-9)', test: (p) => /[0-9]/.test(p) },
+    { id: 'special', label: 'Contains special character (!@#$%^&*)', test: (p) => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(p) },
+  ];
+
+  const validatePassword = (password) => {
+    const errors = passwordRequirements.filter(req => !req.test(password));
+    return errors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Validate password in real-time when password field changes
+    if (name === 'password') {
+      setValidationErrors(validatePassword(value));
+    }
   };
 
   const handleInterestToggle = (interest) => {
@@ -34,6 +59,14 @@ function Signup({ onSignup }) {
 
   const handleStep1Submit = (e) => {
     e.preventDefault();
+    
+    // Validate password requirements
+    const errors = validatePassword(formData.password);
+    if (errors.length > 0) {
+      alert('Please meet all password requirements!');
+      return;
+    }
+    
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
@@ -106,32 +139,67 @@ function Signup({ onSignup }) {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <label className="block text-sm font-medium text-gray-300 mb-2">Password *</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all"
+                onFocus={() => setPasswordFocused(true)}
+                onBlur={() => setPasswordFocused(false)}
+                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all pr-12"
                 placeholder="Create a password"
                 required
-                minLength="6"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-[38px] text-gray-400 hover:text-white transition-colors"
+              >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
+              {/* Password Requirements Display */}
+              {(passwordFocused || formData.password.length > 0) && (
+                <div className="mt-3 p-3 bg-slate-700/50 rounded-lg border border-slate-600">
+                  <p className="text-sm text-gray-300 mb-2 font-medium">Password Requirements:</p>
+                  <div className="grid grid-cols-1 gap-1">
+                    {passwordRequirements.map((req) => {
+                      const isMet = req.test(formData.password);
+                      return (
+                        <div 
+                          key={req.id} 
+                          className={`flex items-center text-xs ${isMet ? 'text-green-400' : 'text-gray-400'}`}
+                        >
+                          <span className="mr-2">{isMet ? '✓' : '○'}</span>
+                          {req.label}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div>
+            <div className="relative">
               <label className="block text-sm font-medium text-gray-300 mb-2">Confirm Password *</label>
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all"
+                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all pr-12"
                 placeholder="Confirm your password"
                 required
                 minLength="6"
               />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-[38px] text-gray-400 hover:text-white transition-colors"
+              >
+                {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
             </div>
 
             <button
@@ -161,19 +229,63 @@ function Signup({ onSignup }) {
             {formData.userType === 'Student' && (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Current Qualification</label>
-                  <select
-                    name="qualification"
-                    value={formData.qualification}
+                  <label className="block text-sm font-medium text-gray-300 mb-2">College/University Name</label>
+                  <input
+                    type="text"
+                    name="collegeName"
+                    value={formData.collegeName || ''}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white transition-all"
-                  >
-                    <option value="">Select qualification</option>
-                    <option value="High School">High School</option>
-                    <option value="Undergraduate">Undergraduate</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                  </select>
+                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all"
+                    placeholder="Enter your college/university name"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Current Year</label>
+                    <select
+                      name="academicYear"
+                      value={formData.academicYear || ''}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white transition-all"
+                    >
+                      <option value="">Select year</option>
+                      <option value="1st Year">1st Year</option>
+                      <option value="2nd Year">2nd Year</option>
+                      <option value="3rd Year">3rd Year</option>
+                      <option value="4th Year">4th Year</option>
+                      <option value="5th Year">5th Year</option>
+                      <option value="Post Graduate">Post Graduate</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Qualification</label>
+                    <select
+                      name="qualification"
+                      value={formData.qualification}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white transition-all"
+                    >
+                      <option value="">Select qualification</option>
+                      <option value="High School">High School</option>
+                      <option value="Undergraduate">Undergraduate</option>
+                      <option value="Graduate">Graduate</option>
+                      <option value="Postgraduate">Postgraduate</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Branch/Specialization</label>
+                  <input
+                    type="text"
+                    name="specialization"
+                    value={formData.specialization || ''}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 transition-all"
+                    placeholder="e.g., Computer Science, Electronics, Business"
+                  />
                 </div>
               </>
             )}

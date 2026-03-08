@@ -140,9 +140,24 @@ function Profile({ user }) {
               <span className="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                 {profile.userType}
               </span>
+              {profile.collegeName && (
+                <span className="bg-slate-700 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  {profile.collegeName}
+                </span>
+              )}
+              {profile.academicYear && (
+                <span className="bg-slate-700 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  {profile.academicYear}
+                </span>
+              )}
               {profile.qualification && (
                 <span className="bg-slate-700 text-gray-300 px-3 py-1 rounded-full text-sm">
                   {profile.qualification}
+                </span>
+              )}
+              {profile.specialization && (
+                <span className="bg-slate-700 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  {profile.specialization}
                 </span>
               )}
               {profile.industry && (

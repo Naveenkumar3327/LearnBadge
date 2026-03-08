@@ -69,7 +69,11 @@ function Dashboard({ user }) {
 
   const getWelcomeMessage = () => {
     if (profile?.userType === 'Student') {
-      return `Welcome to your learning dashboard! As a ${profile.qualification || 'student'}, you're on an exciting journey to build your skills and knowledge.`;
+      const parts = [];
+      if (profile.qualification) parts.push(profile.qualification);
+      if (profile.collegeName) parts.push(`at ${profile.collegeName}`);
+      const description = parts.length > 0 ? parts.join(' ') : 'student';
+      return `Welcome to your learning dashboard! As a ${description}, you're on an exciting journey to build your skills and knowledge.`;
     } else if (profile?.userType === 'Staff') {
       return `Welcome back! As a ${profile.currentRole || 'staff member'} in ${profile.industry || 'education'}, continue your professional development journey.`;
     } else if (profile?.userType === 'Employee') {
@@ -157,11 +161,33 @@ function Dashboard({ user }) {
               <span className="text-gray-400">User Type:</span>
               <span className="text-white font-semibold">{profile?.userType}</span>
             </div>
-            {profile?.userType === 'Student' && profile?.qualification && (
-              <div className="flex justify-between">
-                <span className="text-gray-400">Qualification:</span>
-                <span className="text-white font-semibold">{profile.qualification}</span>
-              </div>
+            {profile?.userType === 'Student' && (
+              <>
+                {profile?.collegeName && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">College:</span>
+                    <span className="text-white font-semibold">{profile.collegeName}</span>
+                  </div>
+                )}
+                {profile?.academicYear && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Year:</span>
+                    <span className="text-white font-semibold">{profile.academicYear}</span>
+                  </div>
+                )}
+                {profile?.qualification && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Qualification:</span>
+                    <span className="text-white font-semibold">{profile.qualification}</span>
+                  </div>
+                )}
+                {profile?.specialization && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Specialization:</span>
+                    <span className="text-white font-semibold">{profile.specialization}</span>
+                  </div>
+                )}
+              </>
             )}
             {(profile?.userType === 'Staff' || profile?.userType === 'Employee') && (
               <>
