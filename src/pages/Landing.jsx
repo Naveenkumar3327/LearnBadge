@@ -158,63 +158,7 @@ function Landing({ user }) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-950 text-gray-400 py-8 sm:py-12 border-t border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            <div className="sm:col-span-2 md:col-span-1">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" /> 
-                <span className="hidden sm:inline">LearnBadge</span>
-                <span className="sm:hidden">LB</span>
-              </h3>
-              <p className="text-sm">Empowering learners worldwide with quality education and achievement recognition.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3 sm:mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-indigo-400 transition-colors">Home</Link></li>
-                <li><Link to="/courses" className="hover:text-indigo-400 transition-colors">Courses</Link></li>
-                <li><Link to="/about" className="hover:text-indigo-400 transition-colors">About</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3 sm:mb-4">Support</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-indigo-400 transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-indigo-400 transition-colors">Contact Us</a></li>
-                <li><a href="#" className="hover:text-indigo-400 transition-colors">FAQ</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3 sm:mb-4">Connect</h4>
-              <div className="flex gap-3 sm:gap-4">
-                <a href="#" className="hover:text-indigo-400 transition-all hover:scale-110 transform">
-                  <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-                <a href="#" className="hover:text-indigo-400 transition-all hover:scale-110 transform">
-                  <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-                <a href="#" className="hover:text-indigo-400 transition-all hover:scale-110 transform">
-                  <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-                <a href="#" className="hover:text-indigo-400 transition-all hover:scale-110 transform">
-                  <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm">
-            <p className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
-              <span>&copy; 2026 LearnBadge. All rights reserved.</span>
-              <span className="hidden sm:inline">Made with</span>
-              <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 fill-current mx-auto sm:mx-0" />
-              <span className="sm:hidden">♥</span>
-              <span>for learners everywhere.</span>
-            </p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }

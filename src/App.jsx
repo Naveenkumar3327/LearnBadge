@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { useState, useEffect } from 'react';
 import { 
   Home, BookOpen, BookMarked, Award, Info, User, 
-  LogOut, Menu, GraduationCap, X 
+  LogOut, Menu, GraduationCap, X, Zap, Star, Heart,
+  Facebook, Twitter, Linkedin, Instagram
 } from 'lucide-react';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
@@ -13,6 +14,112 @@ import Signup from './pages/Signup';
 import MyCourses from './pages/MyCourses';
 import Badges from './pages/Badges';
 import Profile from './pages/Profile';
+
+// Shared Footer Component - Consistent across all pages
+function Footer() {
+  return (
+    <footer className="relative bg-slate-950 text-gray-300 overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 animate-gradient-shift opacity-10"></div>
+      
+      {/* Decorative orbs - subtle */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-600 rounded-full blur-3xl animate-fade-pulse"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-600 rounded-full blur-3xl animate-fade-pulse"></div>
+      
+      {/* Main footer content */}
+      <div className="relative z-10 container mx-auto px-4 py-12 sm:py-16">
+        {/* Main footer grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          {/* Brand column */}
+          <div className="sm:col-span-2 md:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">LearnBadge</h3>
+                <p className="text-xs text-gray-500">Learn & Earn</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-400 mb-4">
+              Empowering learners worldwide with quality education and achievement recognition. Start your journey today!
+            </p>
+            <div className="flex gap-3">
+              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 transition-all hover:scale-105 footer-card">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+          
+          {/* Quick Links */}
+          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-indigo-500/30">
+            <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+              <Zap className="w-5 h-5 text-indigo-400" />
+              Quick Links
+            </h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link to="/" className="text-gray-400 hover:text-indigo-400 transition-colors">Home</Link></li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-indigo-400 transition-colors">Courses</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-indigo-400 transition-colors">About Us</Link></li>
+              <li><Link to="/badges" className="text-gray-400 hover:text-indigo-400 transition-colors">Badges</Link></li>
+            </ul>
+          </div>
+          
+          {/* Support */}
+          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-purple-500/30">
+            <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+              <Star className="w-5 h-5 text-purple-400" />
+              Support
+            </h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Help Center</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Contact Us</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="footer-card bg-slate-800/30 p-5 rounded-xl border border-slate-700/30 hover:border-pink-500/30">
+            <h4 className="font-bold text-white mb-4 flex items-center gap-2">
+              <Heart className="w-5 h-5 text-pink-400" />
+              Contact
+            </h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li>support@learnbadge.com</li>
+              <li>Mon - Fri: 9AM - 6PM</li>
+              <li>123 Learning Street<br />Education City, ED 12345</li>
+            </ul>
+          </div>
+        </div>
+        
+        {/* Bottom bar */}
+        <div className="border-t border-slate-800/50 mt-10 pt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-500">
+              &copy; 2026 LearnBadge. All rights reserved.
+            </p>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-gray-500">Crafted with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span className="text-gray-500">for</span>
+              <span className="gradient-text-footer font-semibold">learners everywhere</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 function TopNavigation({ onLogout }) {
   const location = useLocation();
@@ -290,6 +397,7 @@ function App() {
                 <Route path="/about" element={<About />} />
               </Routes>
             </div>
+            <Footer />
           </>
         ) : (
           <>
@@ -301,6 +409,7 @@ function App() {
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route path="/signup" element={<Signup onSignup={handleLogin} />} />
             </Routes>
+            <Footer />
           </>
         )}
       </div>

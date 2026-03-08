@@ -1,9 +1,15 @@
-# TODO - Add Password View Option
+# Footer Enhancement Task
 
-## Task: Add password view option in login and signup time
+## TODO List:
+- [x] Add smooth CSS animations to index.css
+- [x] Update Footer component in Landing.jsx with professional design
+- [x] Add consistent Footer to all pages via App.jsx
 
-### Steps:
-- [x] 1. Update Login.jsx - Add password visibility toggle
-- [x] 2. Update Signup.jsx - Add password visibility toggle for both password and confirm password fields
-- [ ] 3. Test the changes
+## Status: Completed
+
+## Summary:
+- Removed jumping animations and replaced with smooth, subtle animations
+- Created shared Footer component in App.jsx
+- Footer now appears consistently on all pages (logged in and logged out)
+- Added glassmorphism effect, gradient backgrounds, and card hover effects
 
